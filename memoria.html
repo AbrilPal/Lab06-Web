@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Memoria</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const App = () => {
+          return (
+            <div>
+              <Contenedor />
+            </div>
+          )
+        }
+
+        const Contenedor = () => {
+          //estilo del contenedor
+          const style_contenedor = {
+            display: "grid",
+            gridTemplateColumns: "150px 150px 150px 150px",
+            gridTemplateRows: "150px 150px 150px 150px",
+            gridGap: "10px",
+            padding: "10px"
+          }
+          //estilo de cada carta
+          const style_carta = {
+            backgroundColor: "pink",
+            border: "2px solid green",
+            padding: "20px",
+            fontSize: "30px",
+            textAlign: "center"
+          }
+          const cartas = [1, 2, 3, 4, 5, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16]
+          return (
+            <div style={style_contenedor}>
+              {cartas.map(() =><Carta />)}
+            </div>
+          )
+        }
+
+        const Carta = () => {
+          //estilo de cada carta
+          const style_carta = {
+            backgroundColor: "#FCE4EC",
+            color: "#F8BBD0",
+            border: "2px solid #FFCDD2",
+            padding: "20px",
+            fontSize: "30px",
+            textAlign: "center"
+          }
+          return (
+            <div style={style_carta}>♥</div>
+          )
+        }
+
+
+
+
+        ReactDOM.render(
+          <App />,
+          document.getElementById("root")
+        )
+
+
+    </script>
+  </body>
+</html>
