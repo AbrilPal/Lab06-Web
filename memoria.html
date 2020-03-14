@@ -28,23 +28,26 @@
             gridGap: "10px",
             padding: "10px"
           }
-          //estilo de cada carta
-          const style_carta = {
-            backgroundColor: "pink",
-            border: "2px solid green",
-            padding: "20px",
+
+          //contador
+          const [ contador, setContador ] = React.useState(0)
+          //estilo del contador
+          const style_cantador = {
             fontSize: "30px",
-            textAlign: "center"
+            color: "#F8BBD0"
           }
+
           const cartas = [1, 2, 3, 4, 5, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16]
+          const cont = contador % 2 == 0 ? contador/2 : contador - contador/2 - 0.5
           return (
             <div style={style_contenedor}>
-              {cartas.map(() =><Carta />)}
+              {cartas.map(() =><Carta texto = "</3" sele_carta={() => setContador(contador+1)}/>)}
+              <h1 style ={style_cantador}>Contador:{cont}</h1>
             </div>
           )
         }
 
-        const Carta = () => {
+        const Carta = ({texto, sele_carta}) => {
           //estilo de cada carta
           const style_carta = {
             backgroundColor: "#FCE4EC",
@@ -55,12 +58,9 @@
             textAlign: "center"
           }
           return (
-            <div style={style_carta}>♥</div>
+            <button style={style_carta} onClick={sele_carta}>{texto}</button>
           )
         }
-
-
-
 
         ReactDOM.render(
           <App />,
