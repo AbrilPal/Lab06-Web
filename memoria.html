@@ -37,18 +37,84 @@
             color: "#F8BBD0"
           }
 
-          const cartas = [1, 2, 3, 4, 5, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16]
+          function shuffleArray(array) {
+          for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+            }
+          }
+
+           //cuando la carta ha sido seleccionada 
+          const Carta_Select =() =>{
+
+            return(
+              //el contador
+              setContador(contador+1)
+            )
+          }
+
+          const cartas = [
+            {id: 1, palabra : "A", volteado: false},
+            {id: 2, palabra : "A", volteado: false},
+            {id: 3, palabra : "B", volteado: false},
+            {id: 4, palabra : "B", volteado: false},
+            {id: 5, palabra : "C", volteado: false},
+            {id: 6, palabra : "C", volteado: false},
+            {id: 7, palabra : "D", volteado: false},
+            {id: 8, palabra : "D", volteado: false},
+            {id: 9, palabra : "E", volteado: false},
+            {id: 10, palabra : "E", volteado: false},
+            {id: 11, palabra : "F", volteado: false},
+            {id: 12, palabra : "F", volteado: false},
+            {id: 13, palabra : "G", volteado: false},
+            {id: 14, palabra : "G", volteado: false},
+            {id: 15, palabra : "H", volteado: false},
+            {id: 16, palabra : "H", volteado: false}
+          ]
+
+          const [primerFlip, setPrimerFlip] = React.useState(null)
+          const [Cartas, setCartas, getCartas] = React.useState(cartas)
+
+          const voltear = (index) => {
+            console.log("si")
+            const CartasCopia = [...Cartas]
+            if(CartasCopia[index].volteado !== true ){
+              CartasCopia[index].volteado = true
+              setCartas(CartasCopia)
+              if (primerFlip !== null) {
+                if(CartasCopia[primerFlip].palabra == CartasCopia[index].palabra){
+                  console.log("si entro")
+                  setPrimerFlip(null)
+                } else {
+                  setTimeout(() => {
+                    CartasCopia[primerFlip].volteado = false
+                    CartasCopia[index].volteado = false
+                    setCartas(CartasCopia)
+                    setPrimerFlip(null)
+                  }, 3000)
+                    
+                }
+                
+              } else {
+                setPrimerFlip(index)
+              }
+            }       
+            
+          } 
+
           const cont = contador % 2 == 0 ? contador/2 : contador - contador/2 - 0.5
           return (
             <div style={style_contenedor}>
-              {cartas.map(() =><Carta texto = "</3" sele_carta={() => setContador(contador+1)}/>)}
+              {Cartas.map((cartaa, index) =><Carta key={cartaa.id} cara={cartaa.palabra} volteado={cartaa.volteado} sele_carta={() => {voltear(index), setContador(contador+1)}}/>)}
               <h1 style ={style_cantador}>Contador:{cont}</h1>
             </div>
           )
         }
 
-        const Carta = ({texto, sele_carta}) => {
-          //estilo de cada carta
+        const Carta = ({cara, volteado, sele_carta}) => {
+          //estilo de cada carta boca a bajo
           const style_carta = {
             backgroundColor: "#FCE4EC",
             color: "#F8BBD0",
@@ -57,8 +123,31 @@
             fontSize: "30px",
             textAlign: "center"
           }
+          //
+          const styleCarta = {
+            backgroundColor: "#FCE4EC",
+            color: "#F8BBD0",
+            border: "2px solid #FFCDD2",
+            padding: "20px",
+            fontSize: "30px",
+            textAlign: "center",
+            transition: "transform",
+            transform: volteado? "rotateY(180deg)" : "rotateY(90deg)"
+          }
+          //
+          const styleAtras = {
+            backgroundColor: "#FCE4EC",
+            color: "#F8BBD0",
+            border: "2px solid #FFCDD2",
+            padding: "20px",
+            fontSize: "30px",
+            textAlign: "center",
+            transition: "transform",
+            transform: volteado? "rotateY(90deg)" : "rotateY(180deg)"
+          }
+
           return (
-            <button style={style_carta} onClick={sele_carta}>{texto}</button>
+            <div style={styleAtras} onClick={sele_carta}></div>
           )
         }
 
