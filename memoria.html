@@ -56,22 +56,22 @@
           }
 
           const cartas = [
-            {id: 1, palabra : "A", volteado: false},
-            {id: 2, palabra : "A", volteado: false},
-            {id: 3, palabra : "B", volteado: false},
-            {id: 4, palabra : "B", volteado: false},
-            {id: 5, palabra : "C", volteado: false},
-            {id: 6, palabra : "C", volteado: false},
-            {id: 7, palabra : "D", volteado: false},
-            {id: 8, palabra : "D", volteado: false},
-            {id: 9, palabra : "E", volteado: false},
-            {id: 10, palabra : "E", volteado: false},
-            {id: 11, palabra : "F", volteado: false},
-            {id: 12, palabra : "F", volteado: false},
-            {id: 13, palabra : "G", volteado: false},
-            {id: 14, palabra : "G", volteado: false},
-            {id: 15, palabra : "H", volteado: false},
-            {id: 16, palabra : "H", volteado: false}
+            {id: 1, imagen : "1.jpg", volteado: false},
+            {id: 2, imagen : "2.jpg", volteado: false},
+            {id: 3, imagen : "3.png", volteado: false},
+            {id: 4, imagen : "1.jpg", volteado: false},
+            {id: 5, imagen : "3.png", volteado: false},
+            {id: 6, imagen : "2.jpg", volteado: false},
+            {id: 7, imagen : "5.jpg", volteado: false},
+            {id: 8, imagen : "6.jpg", volteado: false},
+            {id: 9, imagen : "7.png", volteado: false},
+            {id: 10, imagen : "5.jpg", volteado: false},
+            {id: 11, imagen : "7.png", volteado: false},
+            {id: 12, imagen : "6.jpg", volteado: false},
+            {id: 13, imagen : "9.png", volteado: false},
+            {id: 14, imagen : "10.png", volteado: false},
+            {id: 15, imagen : "10.png", volteado: false},
+            {id: 16, imagen : "9png", volteado: false}
           ]
 
           const [primerFlip, setPrimerFlip] = React.useState(null)
@@ -84,7 +84,7 @@
               CartasCopia[index].volteado = true
               setCartas(CartasCopia)
               if (primerFlip !== null) {
-                if(CartasCopia[primerFlip].palabra == CartasCopia[index].palabra){
+                if(CartasCopia[primerFlip].imagen == CartasCopia[index].imagen){
                   console.log("si entro")
                   setPrimerFlip(null)
                 } else {
@@ -107,7 +107,7 @@
           const cont = contador % 2 == 0 ? contador/2 : contador - contador/2 - 0.5
           return (
             <div style={style_contenedor}>
-              {Cartas.map((cartaa, index) =><Carta key={cartaa.id} cara={cartaa.palabra} volteado={cartaa.volteado} sele_carta={() => {voltear(index), setContador(contador+1)}}/>)}
+              {Cartas.map((cartaa, index) =><Carta key={cartaa.id} cara={cartaa.imagen} volteado={cartaa.volteado} sele_carta={() => {voltear(index), setContador(contador+1)}}/>)}
               <h1 style ={style_cantador}>Contador:{cont}</h1>
             </div>
           )
@@ -124,6 +124,10 @@
             textAlign: "center"
           }
           //
+          const styleImagen = {
+          height: "50px",
+          width: "px",
+          }
           const styleCarta = {
             backgroundColor: "#FCE4EC",
             color: "#F8BBD0",
@@ -147,7 +151,12 @@
           }
 
           return (
-            <div style={styleAtras} onClick={sele_carta}></div>
+            <div onClick={sele_carta} style={style_carta}>
+            <div style={styleCarta}>
+              <img style={styleImagen} src={cara}/>
+              <img style={styleAtras}/>
+            </div>
+          </div>
           )
         }
 
