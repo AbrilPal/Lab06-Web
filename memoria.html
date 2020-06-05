@@ -56,22 +56,22 @@
           }
 
           const cartas = [
-            {id: 1, imagen : "1.jpg", volteado: false},
-            {id: 2, imagen : "2.jpg", volteado: false},
-            {id: 3, imagen : "3.png", volteado: false},
-            {id: 4, imagen : "1.jpg", volteado: false},
-            {id: 5, imagen : "3.png", volteado: false},
-            {id: 6, imagen : "2.jpg", volteado: false},
-            {id: 7, imagen : "5.jpg", volteado: false},
-            {id: 8, imagen : "6.jpg", volteado: false},
-            {id: 9, imagen : "7.png", volteado: false},
-            {id: 10, imagen : "5.jpg", volteado: false},
-            {id: 11, imagen : "7.png", volteado: false},
-            {id: 12, imagen : "6.jpg", volteado: false},
-            {id: 13, imagen : "9.png", volteado: false},
-            {id: 14, imagen : "10.png", volteado: false},
-            {id: 15, imagen : "10.png", volteado: false},
-            {id: 16, imagen : "9png", volteado: false}
+            {id: 1, imagen : "A", volteado: false},
+            {id: 2, imagen : "B", volteado: false},
+            {id: 3, imagen : "C", volteado: false},
+            {id: 4, imagen : "A", volteado: false},
+            {id: 5, imagen : "B", volteado: false},
+            {id: 6, imagen : "C", volteado: false},
+            {id: 7, imagen : "D", volteado: false},
+            {id: 8, imagen : "E", volteado: false},
+            {id: 9, imagen : "F", volteado: false},
+            {id: 10, imagen : "D", volteado: false},
+            {id: 11, imagen : "E", volteado: false},
+            {id: 12, imagen : "F", volteado: false},
+            {id: 13, imagen : "G", volteado: false},
+            {id: 14, imagen : "H", volteado: false},
+            {id: 15, imagen : "G", volteado: false},
+            {id: 16, imagen : "H", volteado: false}
           ]
 
           const [primerFlip, setPrimerFlip] = React.useState(null)
@@ -119,16 +119,16 @@
             backgroundColor: "#FCE4EC",
             color: "#F8BBD0",
             border: "2px solid #FFCDD2",
-            padding: "20px",
-            fontSize: "30px",
             textAlign: "center"
           }
           //
           const styleImagen = {
-          height: "50px",
-          width: "px",
+          height: "100%",
+          width: "100%",
           }
           const styleCarta = {
+            height: "100px",
+            width: "100px",
             backgroundColor: "#FCE4EC",
             color: "#F8BBD0",
             border: "2px solid #FFCDD2",
@@ -140,6 +140,8 @@
           }
           //
           const styleAtras = {
+            height: "100px",
+            width: "100px",
             backgroundColor: "#FCE4EC",
             color: "#F8BBD0",
             border: "2px solid #FFCDD2",
@@ -152,11 +154,10 @@
 
           return (
             <div onClick={sele_carta} style={style_carta}>
-            <div style={styleCarta}>
-              <img style={styleImagen} src={cara}/>
-              <img style={styleAtras}/>
+              <div style={styleCarta}>
+                <p>{cara}</p>
+              </div>
             </div>
-          </div>
           )
         }
 
